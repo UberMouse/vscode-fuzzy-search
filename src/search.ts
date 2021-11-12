@@ -66,9 +66,13 @@ export default class Search {
 
   search(text: string): void {
     this.fileNames = [];
-    const command = buildSearch(this.fdPath, this.fzfPath, text.replace(/::/g, '').toLowerCase());
+    if(text.length > 0){
+      const command = buildSearch(this.fdPath, this.fzfPath, text.replace(/::/g, '').toLowerCase());
 
-    this.sh.stdin.write(Buffer.from(command));
+      this.sh.stdin.write(Buffer.from(command));
+    } else {
+      this.onResultData('');
+    }
   }
 
   onData(callback: DataResultCallback){

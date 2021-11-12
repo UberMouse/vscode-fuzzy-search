@@ -15,7 +15,7 @@ export default class FuzzySearch {
     this.onDidChangeValue = this.onDidChangeValue.bind(this);
     this.onAccept = this.onAccept.bind(this);
 
-    this.search.onData(async searchItems => {
+    this.search.onData(searchItems => {
       try {
         const quickPickItems = [...new Set([...this.recentFiles.searchResults, ...searchItems])]
           .slice(0, 10)
@@ -38,7 +38,7 @@ export default class FuzzySearch {
 
     this.quickPick.show();
 
-    this.find(' ');
+    this.find('');
   }
 
   private onDidChangeValue(value: string) {
