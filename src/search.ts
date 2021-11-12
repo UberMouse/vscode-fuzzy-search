@@ -34,7 +34,7 @@ function getFzfPath(): string {
 function buildSearch(fd: string, fzf: string, text: string): string {
   const path = vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0].uri.path;
 
-  return text ? `${fd} --type f . '${path || ''}' | ${fzf} --tiebreak=end -m -f '${text}'\n` : '';
+  return text ? `${fd} -H --exclude '.git' --type f . '${path || ''}' | ${fzf} --tiebreak=end -m -f '${text}'\n` : '';
 }
 
 export default class Search {
