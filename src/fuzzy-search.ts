@@ -17,7 +17,7 @@ export default class FuzzySearch {
 
     this.search.onData(searchItems => {
       try {
-        const quickPickItems = [...new Set([...this.recentFiles.searchResults, ...searchItems])]
+        const quickPickItems = [...new Set([...searchItems])]
           .slice(0, 10)
           .map((filePath) =>
             filePathToQuickPickItem(filePath, this.recentFiles.searchResults.includes(filePath))
@@ -53,7 +53,6 @@ export default class FuzzySearch {
     this.timeout = setTimeout(() => {
       this.quickPick.busy = true;
       const searchTerm = value.toString();
-      this.recentFiles.search(searchTerm);
       this.search.search(searchTerm);
     }, 200);
   }

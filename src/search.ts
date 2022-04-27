@@ -9,7 +9,7 @@ interface DataResultCallback {
 }
 
 function getOsPath(): String {
-  const extensionPath = vscode.extensions.getExtension('tatosjb.fuzzy-search')?.extensionPath;
+  const extensionPath = vscode.extensions.getExtension('UberMouse.fuzzy-search')?.extensionPath;
 
   switch (process.platform) {
     case 'darwin':
